@@ -1,6 +1,5 @@
 package com.example.flashcardapp
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Flashcard toggle
+        // Flashcard toggle (question ↔ answer)
         val questionView = findViewById<View>(R.id.flashcard_question)
         val answerView = findViewById<View>(R.id.flashcard_answer)
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             questionView.isVisible = true
         }
 
-        // Multiple choice
+        // Multiple choice answers with styled feedback
         val choice1 = findViewById<View>(R.id.choice1)
         val choice2 = findViewById<View>(R.id.choice2)
         val choice3 = findViewById<View>(R.id.choice3)
@@ -48,18 +47,21 @@ class MainActivity : AppCompatActivity() {
 
         for (choice in choices) {
             choice.setOnClickListener {
-                // Reset all
-                choices.forEach { c -> c.setBackgroundColor(Color.TRANSPARENT) }
-                // Color based on correctness
+                // Reset all choices to default styled background
+                choices.forEach { c ->
+                    c.setBackgroundResource(R.drawable.flashcard_answer_bg)
+                }
+
+                // Apply feedback with preserved styling
                 if (choice == correctAnswer) {
-                    choice.setBackgroundColor(Color.parseColor("#90EE90")) // Light green
+                    choice.setBackgroundResource(R.drawable.choice_correct_bg)
                 } else {
-                    choice.setBackgroundColor(Color.parseColor("#FFB6C1")) // Light red
+                    choice.setBackgroundResource(R.drawable.choice_incorrect_bg)
                 }
             }
         }
 
-        // Toggle choices visibility
+        // Toggle visibility of answer choices with eye icon
         val toggleBtn = findViewById<ImageButton>(R.id.toggle_choices_btn)
         val choicesViews = arrayOf(choice1, choice2, choice3)
 
