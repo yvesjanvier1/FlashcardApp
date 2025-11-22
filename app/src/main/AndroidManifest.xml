@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FlashcardApp">
         <activity
+            android:name=".CreateFlashcardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddButton"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

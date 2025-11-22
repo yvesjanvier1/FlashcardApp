@@ -4,56 +4,71 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@android:color/white"
+    android:padding="@dimen/activity_padding"
+    android:background="@color/color_background"
     tools:context=".MainActivity">
 
-    <!-- Flashcard: Question (white text on blue background) -->
+    <!-- Flashcard: Question -->
     <TextView
         android:id="@+id/flashcard_question"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/card_margin_top"
+        android:layout_marginLeft="@dimen/card_margin_horizontal"
+        android:layout_marginRight="@dimen/card_margin_horizontal"
         android:gravity="center"
-        android:text="Who is the 44th President of the United States?"
+        android:text="@string/default_question"
         android:textSize="40sp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_on_primary"
         android:background="@drawable/flashcard_question_bg"
         android:elevation="8dp" />
 
-    <!-- Flashcard: Answer (BLUE text on light background) -->
+    <!-- ✏️ Edit Button: top-right of Question -->
+    <ImageButton
+        android:id="@+id/btn_edit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@id/flashcard_question"
+        android:layout_alignTop="@id/flashcard_question"
+        android:layout_marginTop="-8dp"
+        android:layout_marginEnd="-8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_button_edit"
+        android:contentDescription="@string/edit_content_desc"
+        android:elevation="10dp"
+        android:padding="10dp" />
+
+    <!-- Flashcard: Answer -->
     <TextView
         android:id="@+id/flashcard_answer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
+        android:layout_marginLeft="@dimen/card_margin_horizontal"
+        android:layout_marginRight="@dimen/card_margin_horizontal"
         android:gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text=" The correct answer is: 'Barack Obama'"
+        android:text="@string/default_answer_formatted"
         android:textSize="40sp"
-        android:textColor="#2196F3"
+        android:textColor="@color/color_primary"
         android:background="@drawable/flashcard_answer_bg"
         android:elevation="8dp"
         android:visibility="invisible" />
 
-    <!-- Multiple Choice Answers (ALL in BLUE text) -->
+    <!-- MCQ Choices -->
     <TextView
         android:id="@+id/choice1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/flashcard_question"
-        android:layout_marginTop="65dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/mcq_margin_top"
+        android:layout_marginLeft="@dimen/card_margin_horizontal"
+        android:layout_marginRight="@dimen/card_margin_horizontal"
         android:gravity="center"
         android:text="Bill Clinton"
         android:textSize="20sp"
-        android:textColor="#2196F3"
+        android:textColor="@color/color_primary"
         android:background="@drawable/flashcard_answer_bg"
         android:clickable="true"
         android:focusable="true" />
@@ -63,13 +78,13 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/choice1"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/mcq_vertical_spacing"
+        android:layout_marginLeft="@dimen/card_margin_horizontal"
+        android:layout_marginRight="@dimen/card_margin_horizontal"
         android:gravity="center"
         android:text="George H. W. Bush"
         android:textSize="20sp"
-        android:textColor="#2196F3"
+        android:textColor="@color/color_primary"
         android:background="@drawable/flashcard_answer_bg"
         android:clickable="true"
         android:focusable="true" />
@@ -79,27 +94,51 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/choice2"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/mcq_vertical_spacing"
+        android:layout_marginLeft="@dimen/card_margin_horizontal"
+        android:layout_marginRight="@dimen/card_margin_horizontal"
         android:gravity="center"
-        android:text="Barack Obama"
+        android:text="@string/default_answer"
         android:textSize="20sp"
-        android:textColor="#2196F3"
+        android:textColor="@color/color_primary"
         android:background="@drawable/flashcard_answer_bg"
         android:clickable="true"
         android:focusable="true" />
 
-    <!-- Toggle Button (eye icon) at bottom center -->
-    <ImageButton
-        android:id="@+id/toggle_choices_btn"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+    <!-- Bottom control buttons: Eye on LEFT, Add on RIGHT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_eye"
-        android:contentDescription="Toggle answer choices" />
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/activity_padding"
+        android:paddingEnd="@dimen/activity_padding">
+
+        <!-- Eye Button - LEFT side -->
+        <ImageButton
+            android:id="@+id/toggle_choices_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_eye"
+            android:contentDescription="@string/toggle_choices_desc" />
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Add Button (+) - RIGHT side -->
+        <ImageButton
+            android:id="@+id/fab_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_button_add"
+            android:contentDescription="@string/add_content_desc" />
+
+    </LinearLayout>
 
 </RelativeLayout>

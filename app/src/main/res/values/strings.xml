@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FlashcardApp</string>
+    <string name="default_question">Who is the 44th President of the United States?</string>
+    <string name="default_answer">Barack Obama</string>
+    <string name="default_answer_formatted">The correct answer is: "Barack Obama"</string>
+    <string name="answer_format">The correct answer is: "%s"</string>
+    <string name="edit_content_desc">Edit flashcard</string>
+    <string name="add_content_desc">Add new flashcard</string>
+    <string name="toggle_choices_desc">Toggle answer choices</string>
 </resources>
