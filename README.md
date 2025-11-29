@@ -1,8 +1,12 @@
-# Application FlashcardApp – Labo 1
+# Application FlashcardApp – Labo 1 et 2
 
 Une application Android entièrement fonctionnelle de type flashcard, développée avec Kotlin et XML, offrant un type interactif, des choix multiples avec retour visuel et un style d’interface personnalisé.
 
+**Flashcard demo 1**
 ![flashcard-demo](https://github.com/user-attachments/assets/81e0524f-6452-4005-af51-7499d19e3a9b)
+
+**Flashcard demo 2**
+![flashcard 2](https://github.com/user-attachments/assets/7f460355-5e94-4095-b507-a19a5a4c0b10)
 
 ---
 
